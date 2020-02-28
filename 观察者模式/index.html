@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>观察者模式</title>
+</head>
+<body>
+  <script src="./observer.js"></script>
+  <script>
+  Observer.regist('test', function(e) {
+  console.log(e.type, e.args.msg)
+  })
+  Observer.fire('test', {msg:'传递参数'})
+  </script>
+
+</body>
+</html>
