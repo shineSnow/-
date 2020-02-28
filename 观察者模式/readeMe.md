@@ -36,4 +36,48 @@ var Observer = (function(){
     }
   }
   ```
+  对于发布消息的方法,其功能是当观察者发布已给消息时将所有订阅者订阅的消息一次性执行.故应该接受两个参数,消息类型以及动作执行时需要的传递的参数.
+  ```js
+  fire: function(type,args) {
+    //如果该消息没有被注册,则返回
+    if(!__message[type]) return;
+    //定义消息信息
+    var events = {
+      type: type,
+      args: args|| {}
+    },
+    i = 0,
+    len = __message[type].length;
+    //遍历消息动作
+    for(; i< len;i++) {
+      //依次执行注册的消息对象序列
+      __message[type][i] && __message[type][i].call(this, events)
+    }
+  }
+  ```
+  最后是消息注销方法,其功能是将订阅者注销的消息从消息队列中清除,因此我们也需要两个参数,即消息类型以及执行的某一动作.
+
+  ```js
+  remove:function(type,fn) {
+    //如果消息队列存在
+    if(__message[type] instanceof Array) {
+      //从最后一个消息动作遍历
+      var i = __message[type].length - 1;
+      for(; i >= 0 ;i--) {
+        //如果存在该动作则在消息动作序列中移除相应的操作
+        __message[type][i] === fn && __message[type].splice(i, 1);
+      }
+    }
+  }
+  ```
+
+  单元测试
+  ```js
+  //注册消息
+  Observer.regist('test', function(e) {
+    console.log(e.type, e.args.msg)
+  })
+  //发布消息
+  Observer.fire('test',{msg:'参数传递'})
+  ```
 
