@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>两栏自适应布局</title>
+  <style>
+.parent {
+  overflow: hidden;
+  zoom: 1;
+  border: 1px solid black;
+}
+.left {
+  float: left;
+  margin-right: 20px;
+  height: 200px;
+  border: 1px solid red;
+}
+.right {
+  overflow: hidden;
+  border: 1px solid yellow;
+}
+  </style>
+</head>
+<body>
+  <p>
+    两列自适应布局是指一列由内容撑开，另一列撑满剩余宽度的布局方式
+
+    1.float+overflow:hidden
+
+    如果是普通的两列布局，浮动+普通元素的 margin便可以实现，但如果是自适应的两列布局，利用float+overflow:hidden便可以实现，这种办法主要通过 overflow 触发 BFC,而 BFC
+    不会重叠浮动元素。由于设置 overflow:hidden 并不会触发 IE6-浏览器的 haslayout 属性，所以需要设置 zoom:1 来兼容 IE6-浏览器。具体代码如下：
+  </p>
+  <strong>思考</strong>
+  <p>
+  1.父元素中两个块级元素,左侧float,那么左侧的元素便会浮动到父元素的左上边框位置或者上一个浮动元素的后面,但是右侧的块元素的内容不会被遮盖,在浮动元素之外显示
+  </p>
+  <strong>其他实现方法</strong>
+  <p>
+    2.Flexbox 布局
+
+    Flexbox 布局，也叫弹性盒子布局，区区简单几行代码就可以实现各种页面的的布局。
+
+    //html部分同上
+    .parent {
+    display:flex;
+    }
+    .right {
+    margin-left:20px;
+    flex:1;
+    }
+  </p>
+  <p>
+    3.Grid 布局
+
+    Grid 布局，是一个基于网格的二维布局系统，目的是用来优化用户界面设计。
+
+    //html部分同上
+    .parent {
+    display:grid;
+    grid-template-columns:auto 1fr;
+    grid-gap:20px
+    }
+  </p>
+
+  <div class="parent">
+    <div class="left">我是左侧浮动布局</div>
+    <div class="right">right hahha </div>
+  </div>
+  
+</body>
+</html>

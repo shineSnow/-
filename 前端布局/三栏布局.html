@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>三栏布局</title>
+  <style>
+    html * {
+      padding: 0;
+      margin: 0;
+    }
+    .layout article div {
+      min-height: 150px;
+    }
+  </style>
+</head>
+<body>
+  <h1>三栏布局</h1>
+  <strong>特征：中间列自适应宽度，旁边两侧固定宽度，实现三栏布局有多种方式：</strong>
+  <section>
+    <h2>浮动布局</h2>
+    <p>这种布局方式，dom 结构必须是先写浮动部分，然后再中间块，否则右浮动块会掉到下一行。
+      浮动布局的优点就是比较简单，兼容性也比较好。但浮动布局是有局限性的，浮动元素脱离文档流，要做清除浮动，这个处理不好的话，会带来很多问题，比如父容器高度塌陷等。</p>
+  </section>
+<!-- 浮动布局S -->
+  <section class="layout float">
+    <style media="screen">
+      .layout.float .left {
+        float: left;
+        width: 300px;
+        background: red;
+      }
+      .layout.float .center {
+        background: yellow;
+      }
+      .layout.float .right {
+        float: right;
+        width: 300px;
+        background: blue;
+      }
+    </style>
+<article class="left-right-center">
+  <div class="left">left</div>
+<div class="right">right</div> <!-- 右栏部分写在中间部分之前 -->
+  <div class="center">
+     <h2>浮动解决方案</h2>
+     1.这是三栏布局的浮动解决方案； 2.这是三栏布局的浮动解决方案； 3.这是三栏布局的浮动解决方案； 4.这是三栏布局的浮动解决方案； 5.这是三栏布局的浮动解决方案； 6.这是三栏布局的浮动解决方案；
+  </div>
+
+</article>
+
+  </section>
+
+<!-- 浮动布局E -->
+
+<!-- 绝对定位布局S -->
+<section>
+  <h2>绝对定位布局</h2>
+  <p>绝对定位布局优点就是快捷，设置很方便，而且也不容易出问题。缺点就是，容器脱离了文档流，后代元素也脱离了文档流，高度未知的时候，会有问题，这就导致了这种方法的有效性和可使用性是比较差的。</p>
+</section>
+<section class="layout absolute" style="height:150px">
+  <style>
+    .layout.absolute .left-right-center > div {
+      position: absolute;
+    }
+    .layout.absolute .left {
+      left: 0;
+      width: 300px;
+      background: red;
+    }
+    .layout.absolute .center {
+      right: 300px;
+      left: 300px;
+      background: yellow;
+    }
+    .layout.absolute .right {
+      right: 0;
+      width: 300px;
+      background: blue;
+    }
+  </style>
+  <article class="left-right-center">
+     <div class="left">left</div>
+     <div class="center">
+       <h2>绝对定位解决方案</h2>
+       1.这是三栏布局的浮动解决方案； 2.这是三栏布局的浮动解决方案； 3.这是三栏布局的浮动解决方案； 4.这是三栏布局的浮动解决方案； 5.这是三栏布局的浮动解决方案； 6.这是三栏布局的浮动解决方案；
+     </div>
+     <div class="right">right</div>
+  </article>
+</section>
+<!-- 绝对定位布局E -->
+<!-- flex布局S -->
+<section>
+  <h2>flex布局</h2>
+  <p>
+    flexbox 布局是 css3 里新出的一个，它就是为了解决上述两种方式的不足出现的，是比较完美的一个。目前移动端的布局也都是用 flexbox。 flexbox 的缺点就是 IE10 开始支持，但是 IE10 的是-ms
+    形式的。
+  </p>
+</section>
+
+<section class="layout flexbox">
+  <style>
+    .layout.flexbox .left-center-right {
+      display: flex;
+    }
+
+    .layout.flexbox .left {
+      width: 300px;
+      background: red;
+    }
+
+    .layout.flexbox .center {
+      background: yellow;
+      flex: 1;
+    }
+
+    .layout.flexbox .right {
+      width: 300px;
+      background: blue;
+    }
+  </style>
+  <article class="left-center-right">
+    <div class="left">left</div>
+    <div class="center">
+      <h2>flexbox解决方案</h2>
+      1.这是三栏布局的浮动解决方案； 2.这是三栏布局的浮动解决方案； 3.这是三栏布局的浮动解决方案； 4.这是三栏布局的浮动解决方案； 5.这是三栏布局的浮动解决方案； 6.这是三栏布局的浮动解决方案；
+    </div>
+    <div class="right">right</div>
+  </article>
+</section>
+
+
+<!-- flex布局E -->
+
+<!-- 表格布局S -->
+<section>
+  <h2>表格布局</h2>
+  <p>
+    表格布局的兼容性很好，在 flex 布局不兼容的时候，可以尝试表格布局。当内容溢出时会自动撑开父元素。
+
+    表格布局也是有缺陷:① 无法设置栏边距；② 对 seo 不友好；③ 当其中一个单元格高度超出的时候，两侧的单元格也是会跟着一起变高的，然而有时候这并不是我们想要的效果
+  </p>
+</section>
+ <section class="layout table">
+   <style>
+     .layout.table .left-center-right {
+       display: table;
+       height: 150px;
+       width: 100%;
+     }
+     .layout.table .left-center-right > div {
+       display: table-cell;
+     }
+     .layout.table .left {
+       width: 300px;
+       background: red;
+     }
+     .layout.table .center {
+       background: yellow;
+     }
+     .layout.table .right {
+       width: 300px;
+       background: blue;
+     }
+   </style>
+   <article class="left-center-right">
+     <div class="left">left</div>
+     <div class="center">
+       <h2>表格布局解决方案</h2>
+       1.这是三栏布局的浮动解决方案； 2.这是三栏布局的浮动解决方案； 3.这是三栏布局的浮动解决方案； 4.这是三栏布局的浮动解决方案； 5.这是三栏布局的浮动解决方案； 6.这是三栏布局的浮动解决方案；
+     </div>
+     <div class="right">right</div>
+   </article>
+ </section>
+<!-- 表格布局E -->
+
+<!-- 网格布局S -->
+<section>
+  <h2>网格布局</h2>
+  <p>
+    CSS Grid 是创建网格布局最强大和最简单的工具。就像表格一样，网格布局可以让 Web
+    设计师根据元素按列或行对齐排列，但他和表格不同，网格布局没有内容结构，从而使各种布局不可能与表格一样。例如，一个网格布局中的子元素都可以定位自己的位置，这样他们可以重叠和类似元素定位。
+
+    但网格布局的兼容性不好。IE10+上支持，而且也仅支持部分属性。
+  </p>
+</section>
+<section class="layout grid">
+  <style>
+  .layout.grid .left-center-right {
+    display: grid;
+    width: 100%;
+    grid-template-columns: 300px auto 300px;
+    grid-template-rows: 150px;
+  }
+  .layout.grid .left {
+    background: red;
+  }
+  .layout.grid .center {
+    background: yellow;
+  }
+  .layout.grid .right {
+    background: blue;
+  }
+  </style>
+  <article class="left-center-right">
+    <div class="left">left</div>
+    <div class="center">
+      <h2>网格布局解决方案</h2>
+      1.这是三栏布局的浮动解决方案； 2.这是三栏布局的浮动解决方案； 3.这是三栏布局的浮动解决方案； 4.这是三栏布局的浮动解决方案； 5.这是三栏布局的浮动解决方案； 6.这是三栏布局的浮动解决方案；
+    </div>
+    <div class="right">right</div>
+  </article>
+</section>
+
+<!-- 网格布局E -->
+
+<!-- 圣杯布局S -->
+<section>
+  <h2>圣杯布局</h2>
+  <p>
+    ① 特点
+
+    比较特殊的三栏布局，同样也是两边固定宽度，中间自适应，唯一区别是 dom 结构必须是先写中间列部分，这样实现中间列可以优先加载。
+  </p>
+  <p>
+    ③ 缺点
+
+    center 部分的最小宽度不能小于 left 部分的宽度，否则会 left 部分掉到下一行
+    如果其中一列内容高度拉长(如下图)，其他两列的背景并不会自动填充。(借助等高布局正padding+负margin可解决，下文会介绍)
+  </p>
+</section>
+<section class="holy">
+  <style>
+    .holy .container {
+      padding: 0 220px;
+    }
+    .holy .left {
+      float: left;
+      width: 200px;
+      height: 400px;
+      background: red;
+      margin-left: -100%;
+      position: relative;
+      left: -220px;
+    }
+    .holy .center {
+      background: yellow;
+      float: left;
+      width: 100%;
+      height: 500px;
+    }
+    .holy .right {
+      background: blue;
+      float: left;
+      width: 200px;
+      height: 400px;
+      margin-left: -200px;
+      position: relative;
+      right: -220px;
+    }
+  </style>
+
+  <article class="container">
+    <div class="center">圣杯布局</div>
+    <div class="left">left</div>
+    <div class="right">right</div>
+
+  </article>
+<div class="" style="clear: both;"></div>
+</section>
+<!-- 圣杯布局E -->
+
+
+<!-- 双飞翼布局S -->
+<section >
+  <h2>双飞翼布局</h2>
+</section>
+<section class="double_fly">
+  <style>
+    .double_fly .container {
+      min-width: 600px;
+    }
+    .double_fly .left {
+      float: left;
+      margin-left: -100%;
+      width: 200px;
+      height: 400px;
+      background: red;
+    }
+    .double_fly .center {
+      float: left;
+      width: 100%;
+      height: 500px;
+      background: yellow;
+    }
+    .double_fly .center .inner {
+      margin: 0 220px;
+    }
+    .double_fly .right {
+      float: left;
+      margin-left: -200px;
+      width: 200px;
+      height: 400px;
+      background: blue;
+    }
+  </style>
+  <article class="container">
+    <div class="center">
+      <div class="inner">双飞翼布局</div>
+    </div>
+    <div class="left">left</div>
+    <div class="right">right</div>
+  </article>
+</section>
+<!-- 双飞翼布局E -->
+
+
+
+
+
+
+
+
+</body>
+</html>

@@ -34,6 +34,52 @@ function throttle(func,wait) {
 
 ```js
 function throttle( func, wait) {
-  
+  var timeout, context, args;
+
+  return function() {
+    context = this;
+    args = arguments;
+    if(!timeout) {
+      timeout = setTimeout(function() {
+        timeout = null;
+        func.apply(context, args)
+      } ,wait)
+    }
+  }
+}
+```
+
+#### 双剑合壁
+
+有人就说了：我想要一个有头有尾的！就是鼠标移入能立刻执行，停止触发的时候还能再执行一次！
+
+```js
+function throttle(func, wait) {
+  var timeout, context, args, result;
+  var previous = 0;
+  var later = function() {
+    previous = +new Date();
+    timeout = null;
+    func.apply(context,args)
+  }
+  var throttled = function() {
+    var now = +new Date();
+    var remaining = wait - (now - previous);
+    context = this;
+    args = arguments;
+    // 如果没有剩余的时间了或者你改了系统时间
+    if(previous <= 0 || remaining > wait) {
+      if(timeout) {
+        cleartimeout(timeout);
+        timeout= null;
+      }
+      previous = now;
+      func.apply(context, args)
+    } else if(!timeout) {
+      timeout = setTimeout(later, wait)
+    }
+
+  }
+  return throttled;
 }
 ```
