@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>test</title>
+</head>
+<body>
+  111111
+</body>
+<script>
+  //练习观察者模式
+  //一个观察者对象有,他有一个消息容器,和三个方法,分别是订阅消息的方法,取消订阅消息的方法,和发送订阅消息的方法.
+
+  //一,创建观察者对象 吧观察者对象方法闭包中,页面一加载就执行
+
+
+  var Observer = (function(){
+    var __message={}
+    return {
+      //注册信息的接口
+      //订阅消息需要另个参数,分别是消息类型type,和动作action
+      register:function(type,action) {
+        if(typeof __message[type] === 'undefined') {
+            __message[type] = [action]
+        } else {
+            __message[type].push(action)
+        }
+      },
+      //发送订阅消息的接口
+      //对于发布消息的方法,其功能是当观察者发布一个消息的时候将所有订阅者订阅的消息一次性执行.故应该接受两个参数,消息的类型一个动作执行时需要传递的参数.
+      fire:function(type,args) {
+        
+        if(typeof __message[type] === 'undefined') {
+          return
+        }
+        for(var i=0,len=__message[type].length;i<len;i++) {
+          __message[type][i].call(this, args)
+        }
+
+      },
+      //取消订阅的接口
+      //对于取消订阅的方法,其功能是当将订阅者注销的消息从消息队列中清除,因此我们也需要两个参数,即消息的类型以及执行的某一动作.
+      remove:function(type,action) {
+        if(__message[type] instanceof Array) {
+          var i = __message[type].length - 1;
+          for(;i>=0;i--) {
+            __message[type][i] === action && __message[type].splice(i,1)
+          }
+        }
+
+      }
+    }
+  })()
+  Observer.register('test',function(e) {
+    console.log(e);
+  })
+  Observer.fire('test',{msg:'you can do better'})
+</script>
+</html>
