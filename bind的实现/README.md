@@ -51,9 +51,10 @@ Function.prototype.bind2 = function(context) {
 
     self.apply(this instanceof self ? this : context,args.concat(bindArgs))
     // 修改返回函数的 prototype 为绑定函数的 prototype，实例就可以继承函数的原型中的值
+  }
+
     fbound.prototype = this.prototype;
     return fbound;
-  }
 }
 ```
 
@@ -68,10 +69,11 @@ Function.prototype.bind = function(context) {
   var fbound = function() {
     var bindArgs = Array.prototype.slice(arguments);
     self.apply(this instanceof self ? this: context,args.concat(bindArgs));
+  }
+
     fNOP.prototype = this.prototype;
     fbound.prototye = new fNOP();
     return fbound;
-  }
 }
 ```
 
