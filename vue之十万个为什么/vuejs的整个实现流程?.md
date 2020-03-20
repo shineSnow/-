@@ -7,7 +7,7 @@
 
 初始化流程:
 - 创建 Vue 实例对象
-- $\color{red}init{}$过程会初始化生命周期，初始化事件中心，初始化渲染、执行$\color{red}{beforeCreate}$周期函数、初始化 **data、props、computed、watcher**,执行**created**周期函数等。
+- <font color="red">init</font>过程会初始化生命周期，初始化事件中心，初始化渲染、执行<font color="red">beforeCreate</font>周期函数、初始化 **data、props、computed、watcher**,执行**created**周期函数等。
 - 初始化后，调用$**mount** 方法对Vue实例进行挂载（挂载的核心过程包括**模板编译、渲染以及更新**三个过程）
 - 如果没有在 Vue 实例上定义render方法而是定义了template，那么需要经历编译阶段。需要先将template 字符串编译成 render function，template 字符串编译步骤如下 ：
   - parse正则解析template字符串形成 AST（抽象语法树，是源代码的抽象语法结构的树状表现形式）
@@ -25,10 +25,6 @@
 - 当数据发生变化或者视图导致的数据发生了变化时，会触发数据劫持的setter函数，setter会通知初始化依赖收集中的Dep中的和视图相应的Watcher，告知需要重新渲染视图，Wather就会再次通过update方法来更新视图。
 
 可以发现只要视图中添加监听事件，自动变更对应的数据变化时，就可以实现数据和视图的双向绑定了。
-
-
-
-
 
 
 
