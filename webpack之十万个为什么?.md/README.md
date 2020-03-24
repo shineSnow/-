@@ -2,6 +2,7 @@
 [详解webpack loader和plugin编写](https://blog.csdn.net/qq_34629352/article/details/83628917)
 [教你手写一个简单的 webpack loader 与 plugin](https://blog.csdn.net/yolo0927/article/details/85017565)
 
+
 1. 解析webpack配置参数，合并从shell传入和webpack.config.js文件里配置的参数，生产最后的配置结果
 2. 注册所有配置的插件，好让插件监听webpack构建生命周期的事件节点，以做出对应的反应。
 3. 从配置的entry入口文件开始解析文件构建AST语法树，找出每个文件所依赖的文件，递归下去。  
