@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>数组去重</title>
+</head>
+<body>
+
+
+<script>
+    //方法1 双层循环，外层循环元素，内层循环比较值，如果有相同的值则跳过，不相同则push进数组
+    // ?
+    Array.prototype.distinct = function () {
+        var arr = this, result = [], i, j, len = arr.length;
+        for (i = 0; i < len; i++) {
+            for (j = i + 1; j < len; j++) {
+                if (arr[i] === arr[j]) {
+                    j = ++i
+                }
+            }
+            result.push(arr[i])
+        }
+        return result;
+    }
+    var arra = [1, 2, 3, 4, 4, 1, 1, 2, 1, 1, 1];
+    console.log('双层循环去重', arra.distinct()) //返回[3,4,2,1]
+
+    //方法2  双层循环 利用splice直接在原数组进行操作
+    Array.prototype.distinct1 = function () {
+        var arr = this, i, j, len = arr.length;
+        for (i = 0; i < len; i++) {
+            for (j = i + 1; j < len; j++) {
+                if (arr[i] === arr[j]) {
+                    arr.splice(j, 1);
+                    len--;
+                    j--
+                }
+            }
+        }
+        return arr;
+    }
+
+    console.log('双层循环splice去重', arra.distinct1()) //返回[3,4,2,1]
+
+    //方法3 利用对象属性不能相同的特点去重 ？？
+    Array.prototype.unique = function () {
+        var arr = this,i,obj={},result=[],len = arr.length;
+        for(i = 0; i<len; i++) {
+            if(!obj[arr[i]]) { //如果能查找到，证明数组元素重复了
+                obj[arr[i]] = 1;
+                result.push(arr[i]);
+            }
+        }
+        return result;
+    }
+
+    console.log('对象属性', arra.unique()) //返回[3,4,2,1]
+
+    //方法4 数组递归去重    运用递归的思想 先排序，然后从最后开始比较，遇到相同，则删除
+    Array.prototype.unique2 = function () {
+        var arr = this,len = arr.length;
+        arr.sort(function(a,b) {   //对数组进行排序才能方便比较
+            return a-b;
+        })
+        function loop(index) {
+            if(index >=1) {
+                if(arr[index] === arr[index-1]) {
+                    arr.splice(index,1)
+                }
+                loop(index-1);
+            }
+        }
+        loop(len -1);
+        return arr;
+    }
+
+    console.log('数组递归去重', arra.unique2()) //返回[3,4,2,1]
+
+    //方法5 利用indexOf 以及forEach
+    Array.prototype.unique3 = function () {
+        var arr = this,result = [],len = arr.length;
+        arr.forEach(function(v,i,arr){
+            var bool = arr.indexOf(v,i+1);
+            if(bool === -1) {
+                result.push(v)
+            }
+        })
+        return result;
+    }
+
+    console.log('利用indexOf', arra.unique3()) //返回[3,4,2,1]
+
+
+
+    //方法6 利用ES6的set Set数据结构，它类似于数组，其成员的值都是唯一的。利用Array.from将Set结构转换成数组
+
+    function dedupe(array) {
+        return Array.form(new Set(array))
+    }
+
+    //或者使用拓展运算符
+    let arr =[...new Set(arra)]
+
+    // console.log('利用ES6的set Set数据结构', dedupe(arra)) //返回[3,4,2,1]
+</script>
+</body>
+</html>

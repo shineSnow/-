@@ -58,3 +58,7 @@ function defineReactive(target, key, val) {
 }
 
 ```
+
+#### 参考
+[深入理解Vue响应式原理](http://jungahuang.com/2018/02/07/About-responsive-of-Vue/#more)
+[vue的双向绑定原理及实现](https://www.cnblogs.com/canfoo/p/6891868.html)
