@@ -101,3 +101,8 @@ class Events {
 }
 
 ```
+
+### 3.观察者模式和发布订阅模式的区别?
+[区别](https://www.jianshu.com/p/594f018b68e7)
+[很详细的区别让人明白](https://www.cnblogs.com/viaiu/p/9939301.html)
+[经典博文](https://juejin.im/post/5bce9a35f265da0abd355715)  

@@ -409,3 +409,10 @@ p1
 
 #参考
 [Promise / async / Generator 实现&原理大解析（附源码）| 9k字](https://juejin.im/post/5e3b9ae26fb9a07ca714a5cc)
+
+
+## 参考链接  
+[promise源码](https://segmentfault.com/a/1190000009478377)   
+[promise实现](https://blog.csdn.net/u013217071/article/details/76911627)  
+[pomise用法解析](http://www.cnblogs.com/lvdabao/p/es6-promise-1.html)  
+[pomise的运行理解](https://blog.csdn.net/hai8902882/article/details/52562977)  
