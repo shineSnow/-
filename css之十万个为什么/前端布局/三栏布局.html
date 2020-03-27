@@ -262,7 +262,7 @@
 
   <article class="container">
     <div class="center">圣杯布局</div>
-    <div class="left">left</div>
+    <div class="left">leftleftle</div>
     <div class="right">right</div>
 
   </article>
@@ -315,11 +315,49 @@
 <!-- 双飞翼布局E -->
 
 
+<!-- 负值marginS -->
+
+<section class="fu">
+  <h1>负值margin</h1>
+  <style>
+    .fu.container {
+      overflow: hidden;
+    }
+    .fu .left,.fu .right {
+      float: left;
+      width: 200px;
+      height: 400px;
+      background: red;
+    }
+    .fu .main-wrap {
+      float: left;
+      width: 100%;
+      height: 450px;
+      background: yellow;
+      margin: 0 -200px;
+    }
+    .fu .main {
+      margin: 0 200px;
+    }
+
+  </style>
+
+  <div class="container">
+    <div class="left">left</div>
+    <div class="main-wrap">
+      <div class="main">mian</div>
+    </div>
+    <div class="right">right</div>
+  </div>
+</section>
+<!-- 负值marginE -->
 
 
 
 
 
+
+<span class="test"></span>
 
 </body>
 </html>

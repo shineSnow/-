@@ -3,7 +3,7 @@
 [算法](https://www.jackpu.com/qian-duan-mian-shi-zhong-de-chang-jian-de-suan-fa-wen-ti/ ) 
 
 1. 冒泡排序   
-    冒泡排序算法就是依次比较大小，小的的大的进行位置上的交换  
+    冒泡排序算法就是依次比较大小，小的大的进行位置上的交换  
 ```javascript
 function bubbleSort(arr) {
     for(let i = 0,l = arr.length;i<l-1;i++) {

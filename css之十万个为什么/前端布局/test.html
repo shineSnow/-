@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>css</title>
+  <style>
+    .ele:before{
+    content: " ";
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    /* border-right: 1px solid rgba(255,255,255,0.3); */
+    border-left: 1px solid red;
+    -webkit-transform: scaleX(.5);
+    -webkit-transform-origin: 0 0;
+    -webkit-box-sizing: border-box;
+    z-index :0;
+    }
+    .onepx-line {
+        position: relative;
+        height: 40px;
+        margin-bottom: 30px;
+    }
+    /* 淘宝方式 */
+    .tb-line {
+      box-sizing: border-box;
+      background-color: red;
+      height: 1px;
+      /* border-top: 1px solid red; */
+      line-height: 0;
+      transform: scaleY(0.5);
+    }
+    /* 京东1px */
+    .jd-line::after {
+      position: absolute;
+      bottom: -1px;
+      left: 0;
+      content:"";
+      width: 100%;
+      height: 1px;
+      border-top: 1px solid red;
+      transform: scaleY(0.5);
+    }
+  </style>
+</head>
+<body>
+  <div class="onepx-line ele">1px 问题</div>
+    1px 淘宝手机版没有使用CSS伪类进行细线的实现，而是在需要使用细线的地方统一使用div来补位。
+    <div class="onepx-line tb-line"></div>
+    京东方式
+    <div class="onepx-line jd-line">1px </div>
+  
+</body>
+</html>
