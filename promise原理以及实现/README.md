@@ -14,6 +14,7 @@ const p1 = new Promise((resolve,reject) => {
 })
 p1.then(res => console.log(res),err => console.log(errr))
 ```
+博主的思考
 观察这个例子，我们分析Promise的调用流程：
 - Promise的构造方法接收一个executor()，在new Promise()时就立刻执行这个executor回调
 - executor()内部的异步任务被放入宏/微任务队列，等待执行
