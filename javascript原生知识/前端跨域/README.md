@@ -5,3 +5,4 @@
 3. nginx反向代理
 4. WebSocket协议跨域
 5. postMessage跨域
+   

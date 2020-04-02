@@ -1,28 +1,10 @@
 ### 数据的深浅拷贝
 
 #### 浅拷贝
+1. 手写浅拷贝函数
+
 ```js
-//1.手写浅拷贝函数
-var demo = {
-  num:1,
-  str:'string'
-  ary:[1,2,3,4],
-  color:['red','black']
-}
 
-function copy(param) {
-  if(typeof param === 'object' && param !== null) {
-    var con = Array.isArray(param) ? [] :{};
-    for(var item of param) {
-      con[item] = param[item]
-    }
-  } else {
-    return param;
-  }
-}
-
-
-// 浅拷贝
  var obj1 = {
     'name' : 'zhangsan',
     'age' :  '18',
@@ -44,10 +26,11 @@ console.log('obj1',obj1)
 console.log('obj3',obj3)
 
 
-// 2.Object.assign()
 //3.Array.prototype.concat()
 //4.Array.prototype.slice()
 ```
+2.Object.assign()
+
 
 
 #### 深拷贝

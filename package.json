@@ -1,0 +1,21 @@
+{
+  "name": "front-end-desgin-pattern",
+  "version": "1.0.0",
+  "description": "``` 前端代码设计模式",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "publish": "sh ./trans.sh"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shineSnow/front-end-desgin-pattern.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/shineSnow/front-end-desgin-pattern/issues"
+  },
+  "homepage": "https://github.com/shineSnow/front-end-desgin-pattern#readme"
+}
