@@ -1,38 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>call and apply</title>
 </head>
+
 <body>
-  
+
   <script>
-    Function.prototype.call2 = function(context) {
+    Function.prototype.call2 = function (context) {
       var context = Object(context) || window;
       context.fn = this;
-      var args= [];
-      for(var i=1,len=arguments.length;i< len;i++) {
-        args.push('arguments['+i+']')
+      var args = [];
+      for (var i = 1, len = arguments.length; i < len; i++) {
+        args.push('arguments[' + i + ']')
       }
-      var result = eval('context.fn('+args+')')
+      var result = eval('context.fn(' + args + ')')
       delete context.fn;
       return result;
 
     }
 
-    Function.prototype.apply2 = function(context,arr) {
-      var context = Object(context) ||  window;
+    Function.prototype.apply2 = function (context, arr) {
+      var context = Object(context) || window;
       context.fn = this;
       var result = '';
-      if(!arr) {
-          result = context.fn()
+      if (!arr) {
+        result = context.fn()
       } else {
         var args = [];
-        for(var i= 0,len = arr.length;i< len;i++) {
-          args.push('arr['+i+']');
+        for (var i = 0, len = arr.length; i < len; i++) {
+          args.push('arr[' + i + ']');
         }
-        result = eval('context.fn('+args+')');
+        result = eval('context.fn(' + args + ')');
       }
       delete context.fn;
       return result;
@@ -40,19 +42,20 @@
   </script>
   <script>
     var foo = {
-      value :'this is my function'
+      value: 'this is my function'
     }
-    function bar(name,job) {
+
+    function bar(name, job) {
       console.log(this.value)
       console.log(name)
       console.log(job)
-  
+
     }
     bar()
     bar.call2(foo)
-    bar.call2(foo,'jack','doctor')
-    bar.apply2(foo,['lily','teacher'])
-
+    bar.call2(foo, 'jack', 'doctor')
+    bar.apply2(foo, ['lily', 'teacher'])
   </script>
 </body>
+
 </html>

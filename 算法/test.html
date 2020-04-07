@@ -1,65 +1,119 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>算法</title>
 </head>
+
 <body>
   <script>
+    var roundAry = [1, 4, 7, 0, 7, 8, 3, 2]
+
+    function bubbleSort2(arr) {
+      var len = arr.length;
+      for (var i = 0; i < len - 1; i++) {
+        for (var j = i + 1; j < len; j++) {
+          if (arr[i] > arr[j]) {
+            var temp = arr[i];
+            arr[i] = arr[j];
+            arr[j] = temp
+          }
+        }
+      }
+      return arr
+    }
+
+    function quickSort2(arr) {
+      var leftArr = [],
+        rightArr = [],
+        q = arr[0];
+      if (arr.length <= 1) {
+        return arr
+      }
+      for (var i = 1; i < arr.length; i++) {
+        if (arr[i] < q) {
+          leftArr.push(arr[i])
+        } else {
+          rightArr.push(arr[i])
+        }
+      }
+      return [].concat(quickSort(leftArr), q, quickSort(rightArr))
+    }
+
+    console.log('bubbleSort2', bubbleSort2(roundAry))
+    console.log('quickSort2', quickSort2(roundAry))
+
+
+
     //冒泡排序-数据元素一次进行比较小的发的位置进行互换
 
-      var roundAry = [1,4,7,0,7,8,3,2]
-      var roundAry2 = [1,4,7,0,7,8,3,2,9]
+    var roundAry2 = [1, 4, 7, 0, 7, 8, 3, 2, 9]
 
-          function bubbleSort(arr) {
-            for(var i=0,len=arr.length;i<len-1;i++) {
-              for(var j=i+1;j<len;j++) {
-                if(arr[i] > arr[j]) {
-                  var temp = arr[i]
-                  arr[i] = arr[j]
-                  arr[j] = temp
-                }
-              }
-            }
-            return arr
-          }
-        console.log(bubbleSort(roundAry))
-
-      //快速排序 
-      //算法参考某个元素值,将小于它的放到左数组当中,大于它的放到有数组当中,然后递归进行上一次左右数组的操作,返回合并后的数据,就已经是排好序的数组
-      function quickSort(arr) {
-          var q = arr[0],leftArr=[],rightArr = [];
-        if(arr.length <= 1) {
-          return arr
-        }
-        for(var i=1,len=arr.length; i< len; i++) {
-          if(arr[i] < q) {
-            leftArr.push(arr[i])
-          } else {
-            rightArr.push(arr[i])
+    function bubbleSort(arr) {
+      for (var i = 0, len = arr.length; i < len - 1; i++) {
+        for (var j = i + 1; j < len; j++) {
+          if (arr[i] > arr[j]) {
+            var temp = arr[i]
+            arr[i] = arr[j]
+            arr[j] = temp
           }
         }
-        return [].concat(quickSort(leftArr),q,quickSort(rightArr))
       }
-      console.log(quickSort(roundAry2))
-      //斐波那契数列 求前n项的数组
-      function getFibonacci(n) {
+      return arr
+    }
+    console.log(bubbleSort(roundAry))
+
+    //快速排序 
+    //算法参考某个元素值,将小于它的放到左数组当中,大于它的放到有数组当中,然后递归进行上一次左右数组的操作,返回合并后的数据,就已经是排好序的数组
+    function quickSort(arr) {
+      var q = arr[0],
+        leftArr = [],
+        rightArr = [];
+      if (arr.length <= 1) {
+        return arr
+      }
+      for (var i = 1, len = arr.length; i < len; i++) {
+        if (arr[i] < q) {
+          leftArr.push(arr[i])
+        } else {
+          rightArr.push(arr[i])
+        }
+      }
+      return [].concat(quickSort(leftArr), q, quickSort(rightArr))
+    }
+    console.log(quickSort(roundAry2))
+    //斐波那契数列 求前n项的数组
+    function getFibonacci(n) {
       let fibarr = [];
-      let i=1;
-      while(i<= n) { if(i <=2) { fibarr.push(1); } else { var l=fibarr.length; fibarr.push(fibarr[i-2] + fibarr[i-3]) }
-        i++; } return fibarr; }
-        // console.log(getFibonacci(10000000))
+      let i = 1;
+      while (i <= n) {
+        if (i <= 2) {
+          fibarr.push(1);
+        } else {
+          var l = fibarr.length;
+          fibarr.push(fibarr[i - 2] + fibarr[i - 3])
+        }
+        i++;
+      }
+      return fibarr;
+    }
+    // console.log(getFibonacci(10000000))
 
 
 
-        (function() {
-          let arr = [];
-          for(var i=0;i<10000000;i++) {
-            arr.push({index:i,srt:'abcdef'})
-          }
-          console.log(arr)
+    (function () {
+      let arr = [];
+      for (var i = 0; i < 10000000; i++) {
+        arr.push({
+          index: i,
+          srt: 'abcdef'
         })
+      }
+      console.log(arr)
+    })
   </script>
 </body>
+
 </html>

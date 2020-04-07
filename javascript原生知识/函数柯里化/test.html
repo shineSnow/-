@@ -13,15 +13,15 @@
       return a * b * c
     }
 
-    function curry (fn, args) {
+    function curry(fn, args) {
       var len = fn.length;
       args = args || []
-      return function() {
+      return function () {
         var newArgs = args.concat([].slice.call(arguments))
-        if(newArgs.length < len) {
-            return curry.call(this, fn, newArgs)
+        if (newArgs.length < len) {
+          return curry.call(this, fn, newArgs)
         } else {
-            return fn.apply(this, newArgs)
+          return fn.apply(this, newArgs)
         }
       }
     }
@@ -30,7 +30,7 @@
 
     console.log(multi(2)(3)(4));
     console.log(multi(2, 3, 4));
-    
+
 
     multi(2)(3, 4);
     multi(2, 3)(4);

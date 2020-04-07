@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>数组去重</title>
+</head>
+
+<body>
+
+  <script>
+    Array.prototype.unique = function () {
+      var arr = this,
+        len = arr.length,
+        result = [];
+      arr.forEach((v, i) => {
+        var flag = result.includes(v)
+        if (!flag) {
+          result.push(v)
+        }
+      })
+      return result;
+    }
+    var arr2 = [1, 2, 3, 1, 2, 3, 4, 5, 66, 4, 5, 33, 4, 6, 8, 96, 75, 4]
+    console.log(arr2.unique());
+  </script>
+
+</body>
+
+</html>
