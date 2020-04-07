@@ -372,9 +372,9 @@ etag:版本专有的加密指纹。（有的网站不用，并非必须）优先
 [https握手证书验证](https://blog.csdn.net/sunansheng/article/details/78581468)
 
 ### 6. http1.0, http1.1, http2.0的区别?     
-    [参考](https://www.cnblogs.com/heluan/p/8620312.html)   
-    [http2.0的优劣](https://blog.csdn.net/u012657197/article/details/77877840)  
-    [http2.0](https://blog.csdn.net/u012657197/article/details/77877840)  
+[参考](https://www.cnblogs.com/heluan/p/8620312.html)   
+[http2.0的优劣](https://blog.csdn.net/u012657197/article/details/77877840)  
+[http2.0](https://blog.csdn.net/u012657197/article/details/77877840)  
 
 
 ### 7. 认识http的基本信息.  
@@ -383,7 +383,7 @@ etag:版本专有的加密指纹。（有的网站不用，并非必须）优先
 
 
 
-###4. 静态文件的浏览器缓存如何实现?
+### 4. 静态文件的浏览器缓存如何实现?
 
 [http缓存](https://www.cnblogs.com/chenqf/p/6386163.html)  
 [详解http缓存字段](https://www.cnblogs.com/shangxiaofei/p/6214560.html)  
