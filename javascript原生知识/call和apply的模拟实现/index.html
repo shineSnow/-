@@ -10,6 +10,12 @@
 <body>
 
   <script>
+    
+
+
+
+
+
     Function.prototype.call2 = function (context) {
       var context = Object(context) || window;
       context.fn = this;
@@ -22,6 +28,8 @@
       return result;
 
     }
+
+
 
     Function.prototype.apply2 = function (context, arr) {
       var context = Object(context) || window;

@@ -7,6 +7,25 @@
 2. 可以传入参数
 
 关于指定 this 的指向，我们可以使用 call 或者 apply 实现
+```
+//模拟用例
+var name = "小张",age=17;
+var obj ={
+    name:"小王",
+    objAge = this.age,
+    myFun:function(fm,t) {
+        console.log(this.name+"年龄"+this.age,"来自"+fm+"去往"+t)
+    }
+}
+var db = {
+    name:"德玛",
+    age:99
+}
+obj.myFun.call(db,'成都','上海')；　　　　 // 德玛 年龄 99  来自 成都去往上海
+obj.myFun.apply(db,['成都','上海']);      // 德玛 年龄 99  来自 成都去往上海  
+obj.myFun.bind(db,'成都','上海')();       // 德玛 年龄 99  来自 成都去往上海
+obj.myFun.bind(db,['成都','上海'])();　　 // 德玛 年龄 99  来自 成都, 上海去往 undefined
+```
 ### 第一版实现
 ```js
 Function.prototype.bind = function(context) {

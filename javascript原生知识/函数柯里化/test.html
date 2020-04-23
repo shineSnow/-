@@ -13,25 +13,23 @@
       return a * b * c
     }
 
-    function curry(fn, args) {
-      var len = fn.length;
-      args = args || []
-      return function () {
-        var newArgs = args.concat([].slice.call(arguments))
-        if (newArgs.length < len) {
-          return curry.call(this, fn, newArgs)
-        } else {
-          return fn.apply(this, newArgs)
-        }
-      }
+function curry (fn,args) {
+  var len = fn.length;
+  var args = args || [];
+  return function () {
+    var newArgs = args.concat([].slice.call(arguments));
+    if(newArgs.length < len) {
+      return curry.call(this,fn,newArgs);
+    } else {
+      return fn.apply(this,newArgs)
     }
+  }
+}
 
     var multi = curry(multiFn)
 
     console.log(multi(2)(3)(4));
     console.log(multi(2, 3, 4));
-
-
     multi(2)(3, 4);
     multi(2, 3)(4);
   </script>
